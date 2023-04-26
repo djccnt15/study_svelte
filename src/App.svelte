@@ -1,11 +1,10 @@
 <script>
-  let message;
+  import Router from 'svelte-spa-router'
+  import Board_qna from "./routes/Board_qna.svelte"
 
-  fetch("http://127.0.0.1:8000/").then((response) => {
-    response.json().then((json) => {
-      message = json.message;
-    });
-  });
+  const routes = {
+    '/': Board_qna,
+  }
 </script>
 
-<h1>{message}</h1>
+<Router {routes}/>
