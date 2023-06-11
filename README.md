@@ -4,8 +4,8 @@
 
 ## memo
 
-Svelte의 개발용 서버 구동 명령어는 아래와 같다.  
+- Svelte의 개발용 서버 구동 명령어
 
 ```powershell
-> npm run dev
+npm run dev
 ```

@@ -1,9 +1,11 @@
 <script>
   import Router from 'svelte-spa-router'
-  import Board_qna from "./routes/Board_qna.svelte"
+  import Home from "./routes/Home.svelte"
+  import Post from "./routes/Post.svelte"
 
   const routes = {
-    '/': Board_qna,
+    '/': Home,
+    '/post/:id': Post,
   }
 </script>
 
