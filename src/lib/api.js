@@ -1,10 +1,10 @@
 const fastapi = (operation, url, params, success_callback, failure_callback) => {
   let method = operation
-  let content_type = 'application/json'
+  let content_type = "application/json"
   let body = JSON.stringify(params)
 
   let _url = import.meta.env.VITE_SERVER_URL + url
-  if (method === 'get') {
+  if (method === "get") {
     _url += "?" + new URLSearchParams(params)
   }
 
@@ -15,8 +15,8 @@ const fastapi = (operation, url, params, success_callback, failure_callback) => 
     }
   }
 
-  if (method !== 'get') {
-    options['body'] = body
+  if (method !== "get") {
+    options["body"] = body
   }
 
   fetch(_url, options)

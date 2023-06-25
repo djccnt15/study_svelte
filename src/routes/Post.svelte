@@ -1,7 +1,7 @@
 <script>
-  import fastapi from '../lib/api'
+  import fastapi from "../lib/api"
   export let params = {}
-  let id = params.id
+  let id_post = params.id_post
   let post = {}
   let content = {}
   let category = {}
@@ -9,12 +9,12 @@
   let list_comment = []
 
   function get_post() {
-    fastapi("get", "/api/board/post", {id}, (json) => {
-      post = json.post.Post,
-      content = json.post.Content,
-      user = json.post.User,
-      category = json.post.Category
-      list_comment = json.comment
+    fastapi("get", "/api/board/post/detail", {id_post}, (json) => {
+      post = json.post_detail.post,
+      content = json.post_detail.content,
+      user = json.post_detail.user,
+      category = json.post_detail.category
+      list_comment = json.comment_list
     })
   }
 
@@ -31,10 +31,10 @@
   <ul>
     {#each list_comment as comment}
       <li>
-        {comment.Content.content}
-        {comment.Comment.date_create}
-        {comment.Content.date_upd}
-        {comment.User.username}
+        {comment.content.content}
+        {comment.comment.date_create}
+        {comment.content.date_upd}
+        {comment.user.username}
       </li>
     {/each}
   </ul>
