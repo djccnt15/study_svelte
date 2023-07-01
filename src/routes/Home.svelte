@@ -19,6 +19,7 @@
     })
   }
 
+
   get_list_qna()
   get_list_community()
 </script>

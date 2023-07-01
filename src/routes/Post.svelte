@@ -15,6 +15,7 @@
   let comment_content = ""
   let error = {detail:[]}
 
+
   function get_post() {
     fastapi("get", "/api/board/post/detail", {id_post}, (json) => {
       post_detail = json.post_detail,
@@ -22,7 +23,9 @@
     })
   }
 
+
   get_post()
+
 
   function create_comment(event) {
     event.preventDefault()
