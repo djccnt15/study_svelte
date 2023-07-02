@@ -1,5 +1,6 @@
 <script>
   import Router from "svelte-spa-router"
+  import Navigation from "./components/Navigation.svelte"
   import Home from "./routes/Home.svelte"
   import Post from "./routes/Post.svelte"
   import UserCreate from "./routes/UserCreate.svelte"
@@ -11,4 +12,5 @@
   }
 </script>
 
+<Navigation />
 <Router {routes}/>
