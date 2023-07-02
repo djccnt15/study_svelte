@@ -46,28 +46,41 @@
   }
 </script>
 
-<h1>{post_detail.content.subject}</h1>
-{post_detail.post.date_create}
-{post_detail.content.date_upd}
-{post_detail.user.username}
-{post_detail.category.category}
+<div class="container my-3">
+  <!-- post -->
+  <h2 class="border-bottom py-2">{post_detail.content.subject}</h2>
+  <div class="card my-3">
+    <div class="card-body">
+      <div class="card-text" style="white-space: pre-line;">{post_detail.content.content}</div>
+      <div class="d-flex justify-content-end">
+        <div class="badge bg-light text-dark p-2">
+          {post_detail.post.date_create}
+        </div>
+      </div>
+    </div>
+  </div>
 
-<Error error={error} />
-<form method="post">
-  <textarea rows="15" bind:value={comment_content}></textarea>
-  <input type="submit" value="댓글 등록" on:click="{create_comment}">
-</form>
-
-<div>
-  <h2>댓글</h2>
-  <ul>
+  <!-- comment -->
+  <h5 class="border-bottom my-3 py-2">{list_comment.length}개의 답변이 있습니다.</h5>
     {#each list_comment as comment}
-      <li>
-        {comment.content.content}
-        {comment.comment.date_create}
-        {comment.content.date_upd}
-        {comment.user.username}
-      </li>
+      <div class="card my-3">
+        <div class="card-body">
+          <div class="card-text" style="white-space: pre-line;">{comment.content.content}</div>
+          <div class="d-flex justify-content-end">
+            <div class="badge bg-light text-dark p-2">
+              {comment.comment.date_create}
+            </div>
+          </div>
+        </div>
+      </div>
     {/each}
-  </ul>
+
+  <!-- submit comment -->
+  <Error error={error} />
+  <form method="post" class="my-3">
+    <div class="mb-3">
+      <textarea rows="10" bind:value={comment_content} class="form-control" />
+    </div>
+    <input type="submit" value="답변등록" class="btn btn-primary" on:click="{create_comment}" />
+  </form>
 </div>
