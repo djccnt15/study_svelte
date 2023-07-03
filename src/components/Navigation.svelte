@@ -1,5 +1,6 @@
 <script>
   import { link } from 'svelte-spa-router'
+  import { page } from '../lib/store';
 </script>
 
 <!-- nav bar -->
@@ -19,10 +20,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a use:link class="nav-link" href="/qna">QnA</a>
+          <a use:link class="nav-link" href="/qna" on:click="{() => {$page = 0}}">QnA</a>
         </li>
         <li class="nav-item">
-          <a use:link class="nav-link" href="/community">커뮤니티</a>
+          <a use:link class="nav-link" href="/community" on:click="{() => {$page = 0}}">커뮤니티</a>
         </li>
         <li class="nav-item">
           <a use:link class="nav-link" href="/user-create">회원가입</a>
