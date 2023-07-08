@@ -2,6 +2,8 @@
   import fastapi from "../lib/api"
   import { link } from "svelte-spa-router"
   import { page } from "../lib/store";
+  import moment from "moment";
+  moment.locale("ko")
 
   let list_post = []
   let size = 10
@@ -40,7 +42,7 @@
           <td>
             <a use:link href="/post/{post.post.id}">{post.content.subject}</a>
           </td>
-          <td>{post.post.date_create}</td>
+          <td>{moment(post.post.date_create).format("YYYY년 MM월 DD일 hh:mm a")}</td>
           <td>{post.user.username}</td>
         </tr>
       {/each}

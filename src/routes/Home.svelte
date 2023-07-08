@@ -1,10 +1,11 @@
 <script>
   import fastapi from "../lib/api"
   import { link } from "svelte-spa-router"
+  import moment from "moment";
+  moment.locale("ko")
 
   let list_qna = []
   let list_community = []
-
 
   function get_list_qna() {
     fastapi("get", "/api/board/list/qna", {}, (json) => {
@@ -12,13 +13,11 @@
     })
   }
 
-
   function get_list_community() {
     fastapi("get", "/api/board/list/community", {}, (json) => {
       list_community = json.post_list
     })
   }
-
 
   get_list_qna()
   get_list_community()
@@ -41,7 +40,7 @@
           <td>
             <a use:link href="/post/{post.post.id}">{post.content.subject}</a>
           </td>
-          <td>{post.post.date_create}</td>
+          <td>{moment(post.post.date_create).format("YYYY년 MM월 DD일 hh:mm a")}</td>
           <td>{post.user.username}</td>
         </tr>
       {/each}
@@ -66,7 +65,7 @@
           <td>
             <a use:link href="/post/{post.post.id}">{post.content.subject}</a>
           </td>
-          <td>{post.post.date_create}</td>
+          <td>{moment(post.post.date_create).format("YYYY년 MM월 DD일 hh:mm a")}</td>
           <td>{post.user.username}</td>
         </tr>
       {/each}

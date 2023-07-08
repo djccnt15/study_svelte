@@ -1,6 +1,8 @@
 <script>
   import fastapi from "../lib/api"
   import Error from "../components/Error.svelte"
+  import moment from "moment";
+  moment.locale("ko")
 
   export let params = {}
 
@@ -15,7 +17,6 @@
   let comment_content = ""
   let error = {detail:[]}
 
-
   function get_post() {
     fastapi("get", "/api/board/post/detail", {id_post}, (json) => {
       post_detail = json.post_detail,
@@ -23,9 +24,7 @@
     })
   }
 
-
   get_post()
-
 
   function create_comment(event) {
     event.preventDefault()
@@ -54,7 +53,8 @@
       <div class="card-text" style="white-space: pre-line;">{post_detail.content.content}</div>
       <div class="d-flex justify-content-end">
         <div class="badge bg-light text-dark p-2">
-          {post_detail.post.date_create}
+          작성일: {moment(post_detail.post.date_create).format("YYYY년 MM월 DD일 hh:mm a")}<br><br>
+          수정일: {moment(post_detail.content.date_upd).format("YYYY년 MM월 DD일 hh:mm a")}
         </div>
       </div>
     </div>
@@ -68,7 +68,7 @@
           <div class="card-text" style="white-space: pre-line;">{comment.content.content}</div>
           <div class="d-flex justify-content-end">
             <div class="badge bg-light text-dark p-2">
-              {comment.comment.date_create}
+              {moment(comment.comment.date_create).format("YYYY년 MM월 DD일 hh:mm a")}
             </div>
           </div>
         </div>
