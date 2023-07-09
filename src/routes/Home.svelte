@@ -27,7 +27,6 @@
   <table class="table">
     <thead>
       <tr class="table-dark">
-        <th>번호</th>
         <th>제목</th>
         <th>작성일시</th>
         <th>작성자</th>
@@ -36,7 +35,6 @@
     <tbody>
       {#each list_qna as post, i}
         <tr>
-          <td>{i+1}</td>
           <td>
             <a use:link href="/post/{post.post.id}">{post.content.subject}</a>
           </td>
@@ -52,7 +50,6 @@
   <table class="table">
     <thead>
       <tr class="table-dark">
-        <th>번호</th>
         <th>제목</th>
         <th>작성일시</th>
         <th>작성자</th>
@@ -61,7 +58,6 @@
     <tbody>
       {#each list_community as post, i}
         <tr>
-          <td>{i+1}</td>
           <td>
             <a use:link href="/post/{post.post.id}">{post.content.subject}</a>
           </td>
