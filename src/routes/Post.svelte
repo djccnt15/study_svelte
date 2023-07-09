@@ -52,13 +52,18 @@
     <div class="card-body">
       <div class="card-text" style="white-space: pre-line;">{post_detail.content.content}</div>
       <div class="d-flex justify-content-end">
-        <div class="badge bg-light text-dark p-2">
-          작성일: {moment(post_detail.post.date_create).format("YYYY년 MM월 DD일 hh:mm a")}<br><br>
-          수정일: {moment(post_detail.content.date_upd).format("YYYY년 MM월 DD일 hh:mm a")}
+        <div class="badge bg-light text-dark p-2 text-start">
+          <div class="mb-2">작성자: {post_detail.user ? post_detail.user.username : ""}</div>
+          <div>
+            작성일: {moment(post_detail.post.date_create).format("YYYY년 MM월 DD일 hh:mm a")}<br><br>
+            수정일: {moment(post_detail.content.date_upd).format("YYYY년 MM월 DD일 hh:mm a")}
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+  <button class="btn btn-secondary" on:click="{() => {history.back()}}">목록으로</button>
 
   <!-- comment -->
   <h5 class="border-bottom my-3 py-2">{list_comment.length}개의 답변이 있습니다.</h5>
@@ -67,9 +72,12 @@
         <div class="card-body">
           <div class="card-text" style="white-space: pre-line;">{comment.content.content}</div>
           <div class="d-flex justify-content-end">
-            <div class="badge bg-light text-dark p-2">
-              작성일: {moment(comment.comment.date_create).format("YYYY년 MM월 DD일 hh:mm a")}<br><br>
-              수정일: {moment(comment.content.date_upd).format("YYYY년 MM월 DD일 hh:mm a")}
+            <div class="badge bg-light text-dark p-2 text-start">
+              <div class="mb-2">작성자: {comment.user ? comment.user.username : ""}</div>
+              <div>
+                작성일: {moment(comment.comment.date_create).format("YYYY년 MM월 DD일 hh:mm a")}<br><br>
+                수정일: {moment(comment.content.date_upd).format("YYYY년 MM월 DD일 hh:mm a")}
+              </div>
             </div>
           </div>
         </div>
