@@ -41,6 +41,9 @@
           <td>{total - ($page * size) - i}</td>
           <td>
             <a use:link href="/post/{post.post.id}">{post.content.subject}</a>
+            {#if post.count_comment != null}
+              댓글: <span class="text-danger small mx-2">{post.count_comment}</span>
+            {/if}
           </td>
           <td>{moment(post.post.date_create).format("YYYY년 MM월 DD일 hh:mm a")}</td>
           <td>{post.user.username}</td>
