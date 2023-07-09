@@ -68,7 +68,8 @@
           <div class="card-text" style="white-space: pre-line;">{comment.content.content}</div>
           <div class="d-flex justify-content-end">
             <div class="badge bg-light text-dark p-2">
-              {moment(comment.comment.date_create).format("YYYY년 MM월 DD일 hh:mm a")}
+              작성일: {moment(comment.comment.date_create).format("YYYY년 MM월 DD일 hh:mm a")}<br><br>
+              수정일: {moment(comment.content.date_upd).format("YYYY년 MM월 DD일 hh:mm a")}
             </div>
           </div>
         </div>
