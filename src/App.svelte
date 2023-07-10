@@ -6,6 +6,7 @@
   import Qna from "./routes/Qna.svelte"
   import Community from "./routes/Community.svelte"
   import UserCreate from "./routes/UserCreate.svelte"
+  import UserLogin from "./routes/UserLogin.svelte"
 
   const routes = {
     "/": Home,
@@ -13,6 +14,7 @@
     "/qna": Qna,
     "/community": Community,
     "/user-create": UserCreate,
+    '/user-login': UserLogin,
   }
 </script>
 

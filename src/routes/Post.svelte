@@ -1,6 +1,7 @@
 <script>
   import fastapi from "../lib/api"
   import Error from "../components/Error.svelte"
+  import { is_login } from "../lib/store"
   import moment from "moment";
   moment.locale("ko")
 
@@ -88,8 +89,8 @@
   <Error error={error} />
   <form method="post" class="my-3">
     <div class="mb-3">
-      <textarea rows="10" bind:value={comment_content} class="form-control" />
+      <textarea rows="10" bind:value={comment_content} disabled={$is_login ? "" : "disabled"} class="form-control" />
     </div>
-    <input type="submit" value="답변등록" class="btn btn-primary" on:click="{create_comment}" />
+    <input type="submit" value="답변등록" class="btn btn-primary {$is_login ? '' : 'disabled'}" on:click="{create_comment}" />
   </form>
 </div>
