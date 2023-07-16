@@ -5,6 +5,7 @@
   import Post from "./routes/Post.svelte"
   import Qna from "./routes/Qna.svelte"
   import Community from "./routes/Community.svelte"
+  import PostCreate from "./routes/PostCreate.svelte"
   import UserCreate from "./routes/UserCreate.svelte"
   import UserLogin from "./routes/UserLogin.svelte"
 
@@ -13,6 +14,7 @@
     "/post/:id_post": Post,
     "/qna": Qna,
     "/community": Community,
+    '/post-create': PostCreate,
     "/user-create": UserCreate,
     '/user-login': UserLogin,
   }
