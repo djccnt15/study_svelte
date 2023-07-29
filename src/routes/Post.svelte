@@ -1,7 +1,8 @@
 <script>
   import fastapi from "../lib/api"
   import Error from "../components/Error.svelte"
-  import { is_login } from "../lib/store"
+  import { link } from 'svelte-spa-router'
+  import { is_login, username } from "../lib/store"
   import moment from "moment";
   moment.locale("ko")
 
@@ -60,6 +61,11 @@
             수정일: {moment(post_detail.content.date_upd).format("YYYY년 MM월 DD일 hh:mm a")}
           </div>
         </div>
+      </div>
+      <div class="my-3">
+        {#if post_detail.user.username && $username === post_detail.user.username }
+          <a use:link href="/post-update/{post_detail.post.id}" class="btn btn-sm btn-outline-secondary">수정</a>
+        {/if}
       </div>
     </div>
   </div>

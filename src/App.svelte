@@ -8,15 +8,17 @@
   import PostCreate from "./routes/PostCreate.svelte"
   import UserCreate from "./routes/UserCreate.svelte"
   import UserLogin from "./routes/UserLogin.svelte"
+  import PostUpdate from "./routes/PostUpdate.svelte"
 
   const routes = {
     "/": Home,
     "/post/:id_post": Post,
     "/qna": Qna,
     "/community": Community,
-    '/post-create': PostCreate,
+    "/post-create": PostCreate,
     "/user-create": UserCreate,
-    '/user-login': UserLogin,
+    "/user-login": UserLogin,
+    "/post-update/:id_post": PostUpdate
   }
 </script>
 
