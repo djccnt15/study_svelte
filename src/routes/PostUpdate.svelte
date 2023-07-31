@@ -10,7 +10,8 @@
   let post_detail = {
     post: {},
     content: {},
-    category: {},
+    category: "",
+    category_t1: "",
     user: {},
   }
   let category = ""
@@ -19,7 +20,7 @@
 
   fastapi("get", "/api/board/post/detail", {id_post}, (json) => {
     post_detail = json.post_detail
-    category = post_detail.category.category
+    category = post_detail.category
     subject = post_detail.content.subject
     content = post_detail.content.content
   })

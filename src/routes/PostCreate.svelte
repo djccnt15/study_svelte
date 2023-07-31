@@ -11,13 +11,17 @@
   function post_question(event) {
     event.preventDefault()
     let url = "/api/board/post/create"
+    let category_t1 = ""
     let params = {
       category: category,
       subject: subject,
       content: content,
     }
+    fastapi("get", "/api/board/category", {category}, (json) => {
+      category_t1 = json.category
+    })
     fastapi("post", url, params,
-      (json) => {push("/")},
+      (json) => {push("/"+category_t1)},
       (json_error) => {error = json_error}
     )
   }

@@ -1,7 +1,7 @@
 <script>
   import fastapi from "../lib/api"
   import Error from "../components/Error.svelte"
-  import { link } from 'svelte-spa-router'
+  import { link, push } from "svelte-spa-router"
   import { is_login, username } from "../lib/store"
   import moment from "moment";
   moment.locale("ko")
@@ -12,7 +12,8 @@
   let post_detail = {
     post: {},
     content: {},
-    category: {},
+    category: "",
+    category_t1: "",
     user: {},
   }
   let list_comment = []
@@ -30,7 +31,7 @@
 
   function create_comment(event) {
     event.preventDefault()
-    let url = "/api/board/comment/create?id_post=" + id_post
+    let url = "/api/board/comment/create?id_post="+id_post
     let params = {
       content: comment_content
     }
@@ -70,7 +71,7 @@
     </div>
   </div>
 
-  <button class="btn btn-secondary" on:click="{() => {history.back()}}">목록으로</button>
+  <button class="btn btn-secondary" on:click="{() => {push("/"+post_detail.category_t1)}}">목록으로</button>
 
   <!-- comment -->
   <h5 class="border-bottom my-3 py-2">{list_comment.length}개의 답변이 있습니다.</h5>
@@ -97,6 +98,6 @@
     <div class="mb-3">
       <textarea rows="10" bind:value={comment_content} disabled={$is_login ? "" : "disabled"} class="form-control" />
     </div>
-    <input type="submit" value="답변등록" class="btn btn-primary {$is_login ? '' : 'disabled'}" on:click="{create_comment}" />
+    <input type="submit" value="답변등록" class="btn btn-primary {$is_login ? "" : "disabled"}" on:click="{create_comment}" />
   </form>
 </div>
