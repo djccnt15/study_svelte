@@ -9,6 +9,7 @@
   import UserCreate from "./routes/UserCreate.svelte"
   import UserLogin from "./routes/UserLogin.svelte"
   import PostUpdate from "./routes/PostUpdate.svelte"
+  import CommentUpdate from "./routes/CommentUpdate.svelte"
 
   const routes = {
     "/": Home,
@@ -18,7 +19,8 @@
     "/post-create": PostCreate,
     "/user-create": UserCreate,
     "/user-login": UserLogin,
-    "/post-update/:id_post": PostUpdate
+    "/post-update/:id_post": PostUpdate,
+    "/comment-update/:id_comment": CommentUpdate
   }
 </script>
 

@@ -88,6 +88,12 @@
               </div>
             </div>
           </div>
+          <div class="my-3">
+            {#if comment.user && $username === comment.user.username }
+            <a use:link href="/comment-update/{comment.comment.id}"
+              class="btn btn-sm btn-outline-secondary">수정</a>
+            {/if}
+          </div>
         </div>
       </div>
     {/each}
