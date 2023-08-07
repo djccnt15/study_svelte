@@ -15,7 +15,7 @@ const fastapi = (operation, url, params, success_callback, failure_callback) => 
   }
 
   let _url = import.meta.env.VITE_SERVER_URL + url
-  if (method === "get") {
+  if (method === "get" || method === "delete") {
     _url += "?" + new URLSearchParams(params)
   }
 

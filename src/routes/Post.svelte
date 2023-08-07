@@ -46,6 +46,40 @@
       }
     )
   }
+
+  function del_post(_post_id) {
+    if(window.confirm("정말로 삭제하시겠습니까?")) {
+      let url = "/api/board/post/del"
+      let params = {
+        id_post: _post_id
+      }
+      fastapi("delete", url, params,
+        (json) => {
+          push("/"+post_detail.category_t1)
+        },
+        (err_json) => {
+          error = err_json
+        }
+      )
+    }
+  }
+
+  function del_comment(id_comment) {
+    if(window.confirm("정말로 삭제하시겠습니까?")) {
+      let url = "/api/board/comment/del"
+      let params = {
+        id_comment: id_comment
+      }
+      fastapi("delete", url, params,
+        (json) => {
+          get_post()
+        },
+        (err_json) => {
+          error = err_json
+        }
+      )
+    }
+  }
 </script>
 
 <div class="container my-3">
@@ -65,7 +99,10 @@
       </div>
       <div class="my-3">
         {#if post_detail.user.username && $username === post_detail.user.username }
-          <a use:link href="/post-update/{post_detail.post.id}" class="btn btn-sm btn-outline-secondary">수정</a>
+          <a use:link href="/post-update/{post_detail.post.id}"
+            class="btn btn-sm btn-outline-secondary">수정</a>
+          <button class="btn btn-sm btn-outline-secondary"
+            on:click={() => del_post(post_detail.post.id)}>삭제</button>
         {/if}
       </div>
     </div>
@@ -92,6 +129,8 @@
             {#if comment.user && $username === comment.user.username }
             <a use:link href="/comment-update/{comment.comment.id}"
               class="btn btn-sm btn-outline-secondary">수정</a>
+            <button class="btn btn-sm btn-outline-secondary"
+              on:click={() => del_comment(comment.comment.id) }>삭제</button>
             {/if}
           </div>
         </div>
