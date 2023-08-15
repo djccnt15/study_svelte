@@ -15,6 +15,7 @@
     category: "",
     category_t1: "",
     user: {},
+    count_vote: ""
   }
   let list_comment = []
   let comment_content = ""
@@ -80,6 +81,34 @@
       )
     }
   }
+
+  function vote_post(id_post) {
+    if(window.confirm("정말로 추천하시겠습니까?\n이미 추천한 글을 추천하면 추천이 취소됩니다.")) {
+      let url = "/api/board/post/vote?id_post=" + id_post
+      fastapi("post", url, params,
+        (json) => {
+          get_post()
+        },
+        (err_json) => {
+          error = err_json
+        }
+      )
+    }
+  }
+
+  function vote_comment(id_comment) {
+    if(window.confirm("정말로 추천하시겠습니까?\n이미 추천한 댓글을 추천하면 추천이 취소됩니다.")) {
+      let url = "/api/board/comment/vote?id_comment=" + id_comment
+      fastapi("post", url, params,
+        (json) => {
+          get_post()
+        },
+        (err_json) => {
+          error = err_json
+        }
+      )
+    }
+  }
 </script>
 
 <div class="container my-3">
@@ -98,6 +127,14 @@
         </div>
       </div>
       <div class="my-3">
+        <button class="btn btn-sm btn-outline-secondary"
+          on:click="{vote_post(post_detail.post.id)}">추천
+          <span class="badge rounded-pill bg-success">
+            {#if post_detail.count_vote == null}0
+            {:else}{ post_detail.count_vote }
+            {/if}
+          </span>
+        </button>
         {#if post_detail.user.username && $username === post_detail.user.username }
           <a use:link href="/post-update/{post_detail.post.id}"
             class="btn btn-sm btn-outline-secondary">수정</a>
@@ -126,6 +163,14 @@
             </div>
           </div>
           <div class="my-3">
+            <button class="btn btn-sm btn-outline-secondary"
+              on:click="{vote_comment(comment.comment.id)}">추천
+              <span class="badge rounded-pill bg-success">
+                {#if comment.count_vote == null}0
+                {:else}{ comment.count_vote }
+                {/if}
+              </span>
+            </button>
             {#if comment.user && $username === comment.user.username }
             <a use:link href="/comment-update/{comment.comment.id}"
               class="btn btn-sm btn-outline-secondary">수정</a>
