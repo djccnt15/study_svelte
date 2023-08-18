@@ -1,6 +1,6 @@
 <script>
-  import { link } from 'svelte-spa-router'
-  import { page, access_token, username, is_login } from "../lib/store"
+  import { link } from "svelte-spa-router"
+  import { page, access_token, username, is_login, keyword } from "../lib/store"
 </script>
 
 <!-- nav bar -->
@@ -20,16 +20,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a use:link class="nav-link" href="/qna" on:click="{() => {$page = 0}}">QnA</a>
+          <a use:link class="nav-link" href="/qna" on:click="{() => {$keyword = "", $page = 0}}">QnA</a>
         </li>
         <li class="nav-item">
-          <a use:link class="nav-link" href="/community" on:click="{() => {$page = 0}}">커뮤니티</a>
+          <a use:link class="nav-link" href="/community" on:click="{() => {$keyword = "", $page = 0}}">커뮤니티</a>
         </li>
         {#if $is_login}
           <li class="nav-item">
             <a use:link href="/user-login" class="nav-link" on:click={() => {
-              $access_token = ''
-              $username = ''
+              $access_token = ""
+              $username = ""
               $is_login = false
             }}>로그아웃 ({$username})</a>
           </li>
