@@ -30,7 +30,7 @@
 <div class="container my-3">
   <div class="row my-3">
     <div class="col-6">
-      <a use:link href="/question-create"
+      <a use:link href="/post-create"
         class="btn btn-primary {$is_login ? "" : "disabled"}">질문 등록하기</a>
     </div>
     <div class="col-6">
